@@ -1,0 +1,16 @@
+DAL\CategoryElementService.class
+view\HomeController.class
+model\Vacation.class
+view\VacationController.class
+view\EmployeeController.class
+DAL\EmployeeService.class
+model\Email.class
+util\EMF.class
+Main.class
+DAL\VacationService.class
+model\Entity.class
+model\Category.class
+DAL\CategoryService.class
+model\Employee.class
+model\CategoryElement.class
+util\LoggingUtility.class
