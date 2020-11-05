@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="dotin-school-portal@localhost" uuid="53acf96b-4226-4873-a3ce-e8f8855e9fb3">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/dotin-school-portal?characterEncoding=utf-8</jdbc-url>
+    </data-source>
+  </component>
+</project>

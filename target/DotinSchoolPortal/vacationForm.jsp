@@ -45,7 +45,7 @@
                 </h2>
                 <br>
                 <div class="form-row">
-                    <div class="form-gropu col-md-6">
+                    <div class="form-group col-md-6">
                         <label class="col-md-6">Applicant</label>
                         <select class="form-control col-md-6" name="applicant">
                             <c:forEach items="${listEmployee}" var="applicant">
@@ -57,11 +57,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="col-md-6">Start Day</label>
-                        <input type="date" class="form-control col-md-6" name="startDate" title="startDate" required="required">
+                        <input type="date" class="form-control col-md-6" name="startDate" title="startDate" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="col-md-6">End Day</label>
-                        <input type="date" class="form-control col-md-6" name="endDate" title="endDate" required="required">
+                        <input type="date" class="form-control col-md-6" name="endDate" title="endDate" required>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">apply vacation</button>

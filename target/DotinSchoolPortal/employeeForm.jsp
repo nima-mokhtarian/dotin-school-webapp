@@ -46,8 +46,8 @@
                 <br>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label class="col-md-6">Employee Name</label>
-                        <input class="form-control col-md-6" type="text" name="employeeName" required="required">
+                        <label id="employeeNameLabel" class="col-md-6">Employee Name</label>
+                        <input class="form-control col-md-6" type="text" name="employeeName" required>
                     </div>
 
                     <div class="form-gropu col-md-6">

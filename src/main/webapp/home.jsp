@@ -47,17 +47,17 @@
                 </a>
             </div>
             <div class="col">
-                <a href="<%=request.getContextPath()%>/add-customer" class="btn btn-outline-warning btn-lg btn-block">
+                <a href="<%=request.getContextPath()%>/email" class="btn btn-outline-warning btn-lg btn-block">
                     Send Email
                 </a>
             </div>
             <div class="col">
-                <a href="<%=request.getContextPath()%>/add-customer" class="btn btn-outline-success btn-lg btn-block">
+                <a href="<%=request.getContextPath()%>/emailList" class="btn btn-outline-success btn-lg btn-block">
                     Browse Emails
                 </a>
             </div>
             <div class="col">
-                <a href="<%=request.getContextPath()%>/add-customer"  class="btn btn-outline-success btn-lg btn-block">
+                <a href="<%=request.getContextPath()%>/vacationList"  class="btn btn-outline-success btn-lg btn-block">
                     Browse Vacation
                 </a>
             </div>
