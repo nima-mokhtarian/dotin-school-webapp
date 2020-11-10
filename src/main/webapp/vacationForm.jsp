@@ -28,8 +28,8 @@
                 </a>
             </li>
             <li>
-                <a href="<%=request.getContextPath()%>/employee" class="nav-link">
-                    Employee
+                <a href="<%=request.getContextPath()%>/vacation" class="nav-link">
+                    Vacation
                 </a>
             </li>
         </ul>
@@ -41,13 +41,14 @@
         <div class="card-body">
             <form action="/vacation/save" method="post" autocomplete="off">
                 <h2 class="text-center">
-                    Employee
+                    Vacation
                 </h2>
                 <br>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="col-md-6">Applicant</label>
-                        <select class="form-control col-md-6" name="applicant">
+                        <select required class="form-control col-md-6" name="applicant">
+                            <option value="" selected disabled hidden>Choose Applicant</option>
                             <c:forEach items="${listEmployee}" var="applicant">
                                 <option value="${applicant.getName()}">${applicant.getName()}</option>
                             </c:forEach>
@@ -57,11 +58,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="col-md-6">Start Day</label>
-                        <input type="date" class="form-control col-md-6" name="startDate" title="startDate" required>
+                        <input required type="date" class="form-control col-md-6" name="startDate" title="startDate">
                     </div>
                     <div class="form-group col-md-6">
                         <label class="col-md-6">End Day</label>
-                        <input type="date" class="form-control col-md-6" name="endDate" title="endDate" required>
+                        <input required type="date" class="form-control col-md-6" name="endDate" title="endDate">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">apply vacation</button>

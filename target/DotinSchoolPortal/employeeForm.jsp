@@ -46,13 +46,14 @@
                 <br>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label id="employeeNameLabel" class="col-md-6">Employee Name</label>
-                        <input class="form-control col-md-6" type="text" name="employeeName" required>
+                        <label class="col-md-6">Employee Name</label>
+                        <input required class="form-control col-md-6" type="text" name="employeeName">
                     </div>
 
                     <div class="form-gropu col-md-6">
                         <label class="col-md-6">Manger Name</label>
-                        <select class="form-control col-md-6" name="employeeManager">
+                        <select required class="form-control col-md-6" name="employeeManager">
+                            <option value="" selected disabled hidden>Choose Your Manager</option>
                             <c:forEach items="${listEmployee}" var="manager">
                                 <option value="${manager.getName()}">${manager.getName()}</option>
                             </c:forEach>
@@ -62,7 +63,8 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="col-md-6">Role</label>
-                        <select class="form-control col-md-6" name="employeeRole">
+                        <select required class="form-control col-md-6" name="employeeRole">
+                            <option value="" selected disabled hidden>Choose Your Role</option>
                             <c:forEach items="${listRole}" var="role">
                                 <option value="${role.getEnglishName()}">${role.getEnglishName()}</option>
                             </c:forEach>
@@ -70,7 +72,8 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label class="col-md-6">Gender</label>
-                        <select class="form-control col-md-6" name="employeeGender">
+                        <select required class="form-control col-md-6" name="employeeGender">
+                            <option value="" selected disabled hidden>Choose Your Gender</option>
                             <c:forEach items="${listGender}" var="gender">
                                 <option value="${gender.getEnglishName()}">${gender.getEnglishName()}</option>
                             </c:forEach>

@@ -1,7 +1,9 @@
 package view;
 
+import DAL.CategoryElementService;
 import DAL.EmployeeService;
 import DAL.VacationService;
+import model.CategoryElement;
 import model.Employee;
 import model.Vacation;
 
@@ -30,7 +32,7 @@ public class VacationController extends HttpServlet {
         String action = request.getServletPath().substring(startIndex);
         switch (action) {
             case "/save":
-                saveVaction(request, response);
+                saveVacation(request, response);
                 break;
             case "/new":
             default:
@@ -47,11 +49,12 @@ public class VacationController extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private void saveVaction(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    private void saveVacation(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Employee applicant = EmployeeService.getEmployeeByName(request.getParameter("applicant"));
         LocalDate startDate = LocalDate.parse(request.getParameter("startDate"));
         LocalDate endDate = LocalDate.parse(request.getParameter("endDate"));
-        VacationService.saveVacation(new Vacation(startDate, endDate, applicant));
+        CategoryElement waitingForAcceptance = CategoryElementService.getCategoryElementByName("waiting for acceptance");
+        VacationService.saveVacation(new Vacation(startDate, endDate, applicant, waitingForAcceptance));
         RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
         dispatcher.forward(request, response);
     }

@@ -1,13 +1,15 @@
 package model;
 
 import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
 import javax.persistence.Entity;
 
 @Entity
 @Table(name = "email")
-public class Email extends model.Entity{
+public class Email extends model.Entity {
     @ManyToOne(fetch = FetchType.EAGER)
     private Employee sender;
     @ManyToMany(fetch = FetchType.EAGER)
@@ -17,10 +19,11 @@ public class Email extends model.Entity{
     private String title;
     @Column(nullable = false)
     private String body;
-    @Lob
-    private Blob attachment;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Attachment> attachments;
 
-    public Email() {
+    public Email(){
+
     }
 
     public Email(Employee sender, Set<Employee> receiver, String title, String body) {
@@ -62,11 +65,21 @@ public class Email extends model.Entity{
         this.body = body;
     }
 
-    public Blob getAttachment() {
-        return attachment;
+    public List<Attachment> getAttachments() {
+        return attachments;
     }
 
-    public void setAttachment(Blob attachment) {
-        this.attachment = attachment;
+    public void setAttachments(List<Attachment> attachments) {
+        this.attachments = attachments;
+    }
+
+    public void addAttachments(Attachment attachment){
+        if (attachments == null){
+            attachments = new ArrayList<>();
+        }
+        attachments.add(attachment);
+    }
+    public String getShortText() {
+        return this.body.substring(0, 20);
     }
 }

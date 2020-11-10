@@ -34,5 +34,13 @@ public class Main {
             employee.setRole(e % 3 == 0 ? managerRole : employeeRole);
             em.persist(employee);
         });
+        Category vacationStatus = new Category("VacationStatus");
+        CategoryElement waitingForAcceptance = new CategoryElement(vacationStatus, "waiting for acceptance", "در انتظار تایید");
+        CategoryElement accepted = new CategoryElement(vacationStatus, "accepted", "تایید شده");
+        CategoryElement rejected = new CategoryElement(vacationStatus, "rejected", "رد شده");
+        em.persist(vacationStatus);
+        em.persist(waitingForAcceptance);
+        em.persist(accepted);
+        em.persist(rejected);
     }
 }

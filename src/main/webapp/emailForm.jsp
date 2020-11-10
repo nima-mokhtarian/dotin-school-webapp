@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Vacation</title>
+    <title>Email</title>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -28,8 +28,8 @@
                 </a>
             </li>
             <li>
-                <a href="<%=request.getContextPath()%>/employee" class="nav-link">
-                    Employee
+                <a href="<%=request.getContextPath()%>/Email" class="nav-link">
+                    Email
                 </a>
             </li>
         </ul>
@@ -39,15 +39,16 @@
 <div class="container text-left">
     <div class="card">
         <div class="card-body">
-            <form action="/email/save" method="post" autocomplete="off">
+            <form action="/email/send" enctype="multipart/form-data" method="post" autocomplete="off">
                 <h2 class="text-center">
-                    Employee
+                    Email
                 </h2>
                 <br>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                    <label class="col-md-6">Sender</label>
-                        <select class="form-control col-md-6" name="sender">
+                        <label class="col-md-6">Sender</label>
+                        <select required class="form-control col-md-6" name="sender">
+                            <option value="" selected disabled hidden>Choose Sender</option>
                             <c:forEach items="${listEmployee}" var="employee">
                                 <option value="${employee.getName()}">${employee.getName()}</option>
                             </c:forEach>
@@ -57,7 +58,8 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label class="col-md-6">Receivers</label>
-                        <select multiple class="form-control col-md-6" name="receivers">
+                        <select required multiple class="form-control col-md-6" name="receivers">
+                            <option value="" selected disabled hidden>Choose Receivers</option>
                             <c:forEach items="${listEmployee}" var="employee">
                                 <option value="${employee.getName()}">${employee.getName()}</option>
                             </c:forEach>
@@ -66,11 +68,23 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-6">Email</label>
-                        <textarea name="body" class="form-control col-md-12" rows="5"></textarea>
+                        <label class="col-md-6">Title</label>
+                        <input required name="title" class="form-control col-md-6" type="text">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">apply vacation</button>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-6">Email</label>
+                        <textarea required name="body" class="form-control col-md-12" rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-6">Attachment</label>
+                        <input class="col-md-6" type="file" name="file" size="50"/>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">send email</button>
             </form>
         </div>
     </div>

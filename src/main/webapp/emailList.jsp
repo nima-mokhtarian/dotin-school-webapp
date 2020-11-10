@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Vacation List</title>
+    <title>Email List</title>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -28,8 +28,8 @@
                 </a>
             </li>
             <li>
-                <a href="<%=request.getContextPath()%>/vacationList" class="nav-link">
-                    Vacation List
+                <a href="<%=request.getContextPath()%>/emailList" class="nav-link">
+                    Email List
                 </a>
             </li>
         </ul>
@@ -39,17 +39,17 @@
 <div class="container text-left">
     <div class="card">
         <div class="card-body">
-            <form name="vacationForm" action="/vacationList" method="post" autocomplete="off">
+            <form name="emailForm" action="/emailList" method="post" autocomplete="off">
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label class="col-md-6">Applicant</label>
-                        <select class="form-control col-md-6" name="applicantId"
-                                onchange="document.vacationForm.submit();">
-                            <c:forEach items="${listEmployee}" var="applicant">
-                                <option value="" selected disabled hidden>Choose Applicant</option>
+                        <label class="col-md-6">Receiver</label>
+                        <select class="form-control col-md-6" name="receiverId"
+                                onchange="document.emailForm.submit();">
+                            <option value="" selected disabled hidden>Choose Receiver</option>
+                            <c:forEach items="${listEmployee}" var="receiver">
                                 <option
-                                        <c:if test="${applicantId == applicant.getId()}">selected</c:if>
-                                        value="${applicant.getId()}">${applicant.getName()}</option>
+                                        <c:if test="${receiverId == receiver.getId()}">selected</c:if>
+                                        value="${receiver.getId()}">${receiver.getName()}</option>
                             </c:forEach>
                             );">
                         </select>
@@ -60,26 +60,23 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Applicant</th>
-                                <th scope="col">Start Date</th>
-                                <th scope="col">End Date</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
+                                <th scope="col" class="col-md-1">#</th>
+                                <th scope="col" class="col-md-1">Sender</th>
+                                <th scope="col" class="col-md-1">Title</th>
+                                <th scope="col" class="col-md-8">Body</th>
+                                <th scope="col" class="col-md-1">Attachment</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${listVacation}" var="vacation" varStatus="loop">
+                            <c:forEach items="${listEmail}" var="email" varStatus="loop">
                                 <tr>
-                                    <td scope="col">${loop.index}</td>
-                                    <td scope="col">${vacation.employee.name}</td>
-                                    <td scope="col">${vacation.startDate}</td>
-                                    <td scope="col">${vacation.endDate}</td>
-                                    <td scope="col">${vacation.status.englishName}</td>
-                                    <td scope="col">
-                                        <c:if test="${vacation.status.englishName.equals('waiting for acceptance')}">
-                                            <a href="<%=request.getContextPath()%>/vacationList/accept?vacationId=${vacation.getId()}" class="btn btn-outline-success btn-sm">Accept</a>
-                                            <a href="<%=request.getContextPath()%>/vacationList/reject?vacationId=${vacation.getId()}" class="btn btn-outline-danger btn-sm">Reject</a>
+                                    <td scope="col" class="col-md-1">${loop.index}</td>
+                                    <td scope="col" class="col-md-1">${email.sender.name}</td>
+                                    <td scope="col" class="col-md-1">${email.title}</td>
+                                    <td scope="col" class="col-md-8">${email.body}</td>
+                                    <td scope="col" class="col-md-1">
+                                        <c:if test="${email.attachments != null}">
+                                            <a href="<%=request.getContextPath()%>/emailList/download?emailId=${email.getId()}"class="btn btn-outline-success btn-sm">download</a>
                                         </c:if>
                                     </td>
                                 </tr>

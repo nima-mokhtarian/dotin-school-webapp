@@ -1,7 +1,7 @@
 package DAL;
 
 import model.Email;
-import model.Vacation;
+import java.sql.Blob;
 
 import java.util.List;
 
@@ -17,7 +17,11 @@ public class EmailService {
         });
     }
 
-    public static List getEmailBySenderId(long id){
-        return runJpaCode(em -> em.createQuery("from Email e where e.sender.id = :id").setParameter("id", id).getResultList());
+    public static List getEmailByReceiverId(long id){
+        return runJpaCode(em -> em.createQuery("select e from Email e inner join  e.receiver r where r.id = :id ").setParameter("id", id).getResultList());
+    }
+
+    public static List getAttachmentsByEmailId(long id){
+        return runJpaCode(em -> em.createQuery("select e.attachments from Email e where e.id = :id").setParameter("id", id).getResultList());
     }
 }

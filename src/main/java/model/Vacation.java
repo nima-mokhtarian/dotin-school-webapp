@@ -24,10 +24,11 @@ public class Vacation extends model.Entity {
     public Vacation() {
     }
 
-    public Vacation(LocalDate startDate, LocalDate endDate, Employee employee) {
+    public Vacation(LocalDate startDate, LocalDate endDate, Employee employee, CategoryElement status) {
         this.startDate = new Date(startDate.getYear(), startDate.getMonthValue(), startDate.getDayOfMonth());
         this.endDate = new Date(endDate.getYear(), startDate.getMonthValue(), endDate.getDayOfMonth());
         this.employee = employee;
+        this.status = status;
     }
 
     public Date getStartDate() {

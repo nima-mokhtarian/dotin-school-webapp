@@ -1,10 +1,7 @@
 package view;
 
-import DAL.CategoryElementService;
 import DAL.EmployeeService;
 import DAL.VacationService;
-import model.Employee;
-import model.Vacation;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,12 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/vacationList"})
+@WebServlet(urlPatterns = {"/vacationList", "/vacationList/accept", "/vacationList/reject"})
 public class VacationListController extends HttpServlet {
-    public void init() {}
+    long userId;
+
+    public void init() {
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,7 +28,17 @@ public class VacationListController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int startIndex = request.getServletPath().lastIndexOf("/");
         String action = request.getServletPath().substring(startIndex);
+
+        userId = (request.getParameter("applicantId") != null ? Long.parseLong(request.getParameter("applicantId")) : -1);
+        request.setAttribute("applicantId", userId);
+
         switch (action) {
+            case "/accept":
+                acceptVacation(request, response);
+                break;
+            case "/reject":
+                rejectVacation(request, response);
+                break;
             case "/view":
             default:
                 showList(request, response);
@@ -37,10 +46,22 @@ public class VacationListController extends HttpServlet {
         }
     }
 
+    private void rejectVacation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        long vacationId = Long.parseLong(request.getParameter("vacationId"));
+        VacationService.rejectVacation(vacationId);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/vacationList?applicationId=" + userId);
+        dispatcher.forward(request, response);
+    }
+
+    private void acceptVacation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        long vacationId = Long.parseLong(request.getParameter("vacationId"));
+        VacationService.acceptVacation(vacationId);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/vacationList?applicationId=" + userId);
+        dispatcher.forward(request, response);
+    }
+
     private void showList(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        long userId = (request.getParameter("applicantId") != null ? Long.parseLong(request.getParameter("applicantId")) : -1);
         List listVacation = VacationService.getVacationByApplicantId(userId);
-        request.setAttribute("applicantId", userId);
         request.setAttribute("listVacation", listVacation);
         List listEmployee = EmployeeService.getAllEmployee();
         request.setAttribute("listEmployee", listEmployee);
