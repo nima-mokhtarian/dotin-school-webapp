@@ -32,6 +32,11 @@
                     Employee
                 </a>
             </li>
+            <li>
+                <a href="<%=request.getContextPath()%>/logout" class="nav-link">
+                    logout
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -49,7 +54,6 @@
                         <label class="col-md-6">Employee Name</label>
                         <input required class="form-control col-md-6" type="text" name="employeeName">
                     </div>
-
                     <div class="form-gropu col-md-6">
                         <label class="col-md-6">Manger Name</label>
                         <select required class="form-control col-md-6" name="employeeManager">
@@ -78,6 +82,16 @@
                                 <option value="${gender.getEnglishName()}">${gender.getEnglishName()}</option>
                             </c:forEach>
                         </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="col-md-6">Username</label>
+                        <input required class="form-control col-md-6" type="text" name="username">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-6">Password</label>
+                        <input required class="form-control col-md-6" type="text" name="password">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">save employee</button>

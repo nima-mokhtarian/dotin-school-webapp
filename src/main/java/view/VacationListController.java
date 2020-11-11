@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(urlPatterns = {"/vacationList", "/vacationList/accept", "/vacationList/reject"})
-public class VacationListController extends HttpServlet {
+public class VacationListController extends DotinController {
     long userId;
 
     public void init() {
@@ -26,11 +26,14 @@ public class VacationListController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        super.doGet(request, response);
         int startIndex = request.getServletPath().lastIndexOf("/");
         String action = request.getServletPath().substring(startIndex);
 
-        userId = (request.getParameter("applicantId") != null ? Long.parseLong(request.getParameter("applicantId")) : -1);
+//        userId = (request.getParameter("applicantId") != null ? Long.parseLong(request.getParameter("applicantId")) : -1);
+        userId = user.getId();
         request.setAttribute("applicantId", userId);
+
 
         switch (action) {
             case "/accept":
@@ -61,7 +64,7 @@ public class VacationListController extends HttpServlet {
     }
 
     private void showList(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        List listVacation = VacationService.getVacationByApplicantId(userId);
+        List listVacation = VacationService.getVacationByManagerId(userId);
         request.setAttribute("listVacation", listVacation);
         List listEmployee = EmployeeService.getAllEmployee();
         request.setAttribute("listEmployee", listEmployee);

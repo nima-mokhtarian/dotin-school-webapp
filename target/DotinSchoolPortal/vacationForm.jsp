@@ -32,6 +32,11 @@
                     Vacation
                 </a>
             </li>
+            <li>
+                <a href="<%=request.getContextPath()%>/logout" class="nav-link">
+                    logout
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -44,7 +49,7 @@
                     Vacation
                 </h2>
                 <br>
-                <div class="form-row">
+                <%--<div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="col-md-6">Applicant</label>
                         <select required class="form-control col-md-6" name="applicant">
@@ -54,7 +59,7 @@
                             </c:forEach>
                         </select>
                     </div>
-                </div>
+                </div>--%>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="col-md-6">Start Day</label>

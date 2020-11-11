@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/home")
-public class HomeController extends HttpServlet {
+public class HomeController extends DotinController {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -17,6 +17,7 @@ public class HomeController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        super.doGet(request, response);
         request.setCharacterEncoding("UTF-8");
         String selectedLanguageParameter = request.getParameter("selectedLanguage");
         String selectedLanguageSession = (String) request.getSession().getAttribute("selectedLanguage");

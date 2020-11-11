@@ -18,7 +18,7 @@ public class Main {
     private static void initDotinPortal(EntityManager em) {
         Category role = new Category("Role");
         CategoryElement managerRole = new CategoryElement(role, "manager", "مدیر");
-        CategoryElement employeeRole = new CategoryElement(role,  "employee", "کارمند");
+        CategoryElement employeeRole = new CategoryElement(role, "employee", "کارمند");
         Category gender = new Category("Gender");
         CategoryElement maleGender = new CategoryElement(gender, "male", "مرد");
         CategoryElement femaleGender = new CategoryElement(gender, "female", "زن");
@@ -28,10 +28,20 @@ public class Main {
         em.persist(managerRole);
         em.persist(maleGender);
         em.persist(femaleGender);
+        Employee nima = new Employee();
+        nima.setName("nima");
+        nima.setRole(managerRole);
+        nima.setGender(maleGender);
+        nima.setUsername("nima");
+        nima.setPassword("nima");
+        em.persist(nima);
         IntStream.range(1, 10).forEach(e -> {
             Employee employee = new Employee();
             employee.setName("e" + e);
             employee.setRole(e % 3 == 0 ? managerRole : employeeRole);
+            employee.setManger(nima);
+            employee.setUsername("e" + e);
+            employee.setPassword("e" + e);
             em.persist(employee);
         });
         Category vacationStatus = new Category("VacationStatus");

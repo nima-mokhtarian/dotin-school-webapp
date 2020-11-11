@@ -32,6 +32,11 @@
                     Vacation List
                 </a>
             </li>
+            <li>
+                <a href="<%=request.getContextPath()%>/logout" class="nav-link">
+                    logout
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -40,7 +45,7 @@
     <div class="card">
         <div class="card-body">
             <form name="vacationForm" action="/vacationList" method="post" autocomplete="off">
-                <div class="form-row">
+                <%--<div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="col-md-6">Applicant</label>
                         <select class="form-control col-md-6" name="applicantId"
@@ -54,7 +59,7 @@
                             );">
                         </select>
                     </div>
-                </div>
+                </div>--%>
                 <div class="form-row">
                     <div class="form-group col-md-10">
                         <table class="table">

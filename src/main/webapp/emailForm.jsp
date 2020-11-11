@@ -23,6 +23,11 @@
          style="background-color: #fbbc05;height: 60px;">
         <ul class="navbar-nav">
             <li>
+                <a href="<%=request.getContextPath()%>/logout" class="nav-link">
+                    logout
+                </a>
+            </li>
+            <li>
                 <a href="<%=request.getContextPath()%>/home" class="nav-link">
                     home
                 </a>
@@ -44,7 +49,7 @@
                     Email
                 </h2>
                 <br>
-                <div class="form-row">
+                <%--<div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="col-md-6">Sender</label>
                         <select required class="form-control col-md-6" name="sender">
@@ -54,7 +59,7 @@
                             </c:forEach>
                         </select>
                     </div>
-                </div>
+                </div>--%>
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label class="col-md-6">Receivers</label>

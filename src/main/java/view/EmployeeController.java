@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(urlPatterns = {"/employee", "/employee/save"})
-public class EmployeeController extends HttpServlet {
+public class EmployeeController extends DotinController {
     public void init() {}
 
     @Override
@@ -25,6 +25,7 @@ public class EmployeeController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        super.doGet(request, response);
         int startIndex = request.getServletPath().lastIndexOf("/");
         String action = request.getServletPath().substring(startIndex);
         switch (action) {
@@ -55,8 +56,10 @@ public class EmployeeController extends HttpServlet {
         Employee manager = EmployeeService.getEmployeeByName(request.getParameter("employeeManager"));
         CategoryElement role = CategoryElementService.getCategoryElementByName(request.getParameter("employeeRole"));
         CategoryElement gender = CategoryElementService.getCategoryElementByName(request.getParameter("employeeGender"));
+        String username = String.valueOf(request.getParameter("username"));
+        String password = String.valueOf(request.getParameter("password"));
 
-        EmployeeService.saveEmployee(new Employee(name, manager, gender, role));
+        EmployeeService.saveEmployee(new Employee(name, manager, gender, role, username, password));
         RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
         dispatcher.forward(request, response);
     }

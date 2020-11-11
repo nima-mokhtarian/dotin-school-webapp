@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
 
 @WebServlet(urlPatterns = {"/email", "/email/send"})
 @MultipartConfig
-public class EmailController extends HttpServlet {
+public class EmailController extends DotinController {
     public void init() {}
 
     @Override
@@ -42,6 +42,7 @@ public class EmailController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        super.doGet(request, response);
         int startIndex = request.getServletPath().lastIndexOf("/");
         String action = request.getServletPath().substring(startIndex);
         switch (action) {
@@ -63,7 +64,8 @@ public class EmailController extends HttpServlet {
     }
 
     private void sendEmail(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        Employee sender = EmployeeService.getEmployeeByName(request.getParameter("sender"));
+//        Employee sender = EmployeeService.getEmployeeByName(request.getParameter("sender"));
+        Employee sender = user;
         Set<Employee> receiver = Arrays.stream(request.getParameterValues("receivers")).map(r -> EmployeeService.getEmployeeByName(r)).collect(Collectors.toSet());
         String title = request.getParameter("title");
         String body = request.getParameter("body");

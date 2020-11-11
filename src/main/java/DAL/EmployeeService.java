@@ -24,4 +24,8 @@ public class EmployeeService {
     public static List getEmployeeByRoll(String roll){
         return runJpaCode(em -> em.createQuery("from Employee e where e.role.englishName = :roll").setParameter("roll", roll).getResultList());
     }
+
+    public static Employee checkLogin(String username, String password) {
+        return runJpaCode(em -> em.createQuery("from Employee e where e.username = :username and e.password = :password", Employee.class).setParameter("username", username).setParameter("password", password).getSingleResult());
+    }
 }

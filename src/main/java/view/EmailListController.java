@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(urlPatterns = {"/emailList", "/emailList/download"})
-public class EmailListController extends HttpServlet {
+public class EmailListController extends DotinController {
     public void init() {
     }
 
@@ -29,6 +29,7 @@ public class EmailListController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        super.doGet(request, response);
         int startIndex = request.getServletPath().lastIndexOf("/");
         String action = request.getServletPath().substring(startIndex);
         switch (action) {
@@ -43,9 +44,9 @@ public class EmailListController extends HttpServlet {
     }
 
     private void showList(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        long userId = (request.getParameter("receiverId") != null ? Long.parseLong(request.getParameter("receiverId")) : -1);
-        request.setAttribute("receiverId", userId);
-        List listEmail = EmailService.getEmailByReceiverId(userId);
+//        long userId = (request.getParameter("receiverId") != null ? Long.parseLong(request.getParameter("receiverId")) : -1);
+//        request.setAttribute("receiverId", user.getId());
+        List listEmail = EmailService.getEmailByReceiverId(user.getId());
         request.setAttribute("listEmail", listEmail);
         List listEmployee = EmployeeService.getAllEmployee();
         request.setAttribute("listEmployee", listEmployee);

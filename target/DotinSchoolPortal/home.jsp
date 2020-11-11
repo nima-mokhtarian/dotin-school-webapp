@@ -20,7 +20,16 @@
 <body style="direction: ltr">
 
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: darkgray; height: 60px;"></nav>
+    <nav class="navbar navbar-expand-md navbar-dark"
+         style="background-color: #fbbc05;height: 60px;">
+        <ul class="navbar-nav">
+            <li>
+                <a href="<%=request.getContextPath()%>/logout" class="nav-link">
+                    logout
+                </a>
+            </li>
+        </ul>
+    </nav>
 </header>
 
 <br>

@@ -18,7 +18,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @WebServlet(urlPatterns = {"/vacation", "/vacation/save"})
-public class VacationController extends HttpServlet {
+public class VacationController extends DotinController {
     public void init() {}
 
     @Override
@@ -28,6 +28,7 @@ public class VacationController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        super.doGet(request, response);
         int startIndex = request.getServletPath().lastIndexOf("/");
         String action = request.getServletPath().substring(startIndex);
         switch (action) {
@@ -43,14 +44,15 @@ public class VacationController extends HttpServlet {
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
-        List listEmployee = EmployeeService.getAllEmployee();
-        request.setAttribute("listEmployee", listEmployee);
+//        List listEmployee = EmployeeService.getAllEmployee();
+//        request.setAttribute("listEmployee", listEmployee);
         RequestDispatcher dispatcher = request.getRequestDispatcher("vacationForm.jsp");
         dispatcher.forward(request, response);
     }
 
     private void saveVacation(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        Employee applicant = EmployeeService.getEmployeeByName(request.getParameter("applicant"));
+//        Employee applicant = EmployeeService.getEmployeeByName(request.getParameter("applicant"));
+        Employee applicant = user;
         LocalDate startDate = LocalDate.parse(request.getParameter("startDate"));
         LocalDate endDate = LocalDate.parse(request.getParameter("endDate"));
         CategoryElement waitingForAcceptance = CategoryElementService.getCategoryElementByName("waiting for acceptance");

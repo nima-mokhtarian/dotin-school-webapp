@@ -22,6 +22,10 @@ public class VacationService {
         return runJpaCode(em -> em.createQuery("from Vacation v where v.employee.id = :id").setParameter("id", id).getResultList());
     }
 
+    public static List getVacationByManagerId(long id){
+        return runJpaCode(em -> em.createQuery("from Vacation v where v.employee.manger.id = :id").setParameter("id", id).getResultList());
+    }
+
     public static void acceptVacation(long id){
         CategoryElement accepted = CategoryElementService.getCategoryElementByName("accepted");
         runJpaCode(em -> em.createQuery("update Vacation set status = :status where id = :id").setParameter("status", accepted).setParameter("id", id).executeUpdate());

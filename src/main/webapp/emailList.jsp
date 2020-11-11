@@ -32,6 +32,11 @@
                     Email List
                 </a>
             </li>
+            <li>
+                <a href="<%=request.getContextPath()%>/logout" class="nav-link">
+                    logout
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -41,7 +46,7 @@
         <div class="card-body">
             <form name="emailForm" action="/emailList" method="post" autocomplete="off">
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <%--<div class="form-group col-md-6">
                         <label class="col-md-6">Receiver</label>
                         <select class="form-control col-md-6" name="receiverId"
                                 onchange="document.emailForm.submit();">
@@ -53,28 +58,28 @@
                             </c:forEach>
                             );">
                         </select>
-                    </div>
+                    </div>--%>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-10">
                         <table class="table">
                             <thead>
                             <tr>
-                                <th scope="col" class="col-md-1">#</th>
-                                <th scope="col" class="col-md-1">Sender</th>
-                                <th scope="col" class="col-md-1">Title</th>
-                                <th scope="col" class="col-md-8">Body</th>
-                                <th scope="col" class="col-md-1">Attachment</th>
+                                <th scope="col">#</th>
+                                <th scope="col">Sender</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Body</th>
+                                <th scope="col">Attachment</th>
                             </tr>
                             </thead>
                             <tbody>
                             <c:forEach items="${listEmail}" var="email" varStatus="loop">
                                 <tr>
-                                    <td scope="col" class="col-md-1">${loop.index}</td>
-                                    <td scope="col" class="col-md-1">${email.sender.name}</td>
-                                    <td scope="col" class="col-md-1">${email.title}</td>
-                                    <td scope="col" class="col-md-8">${email.body}</td>
-                                    <td scope="col" class="col-md-1">
+                                    <td scope="col">${loop.index}</td>
+                                    <td scope="col">${email.sender.name}</td>
+                                    <td scope="col">${email.title}</td>
+                                    <td scope="col">${email.body}</td>
+                                    <td scope="col">
                                         <c:if test="${email.attachments != null}">
                                             <a href="<%=request.getContextPath()%>/emailList/download?emailId=${email.getId()}"class="btn btn-outline-success btn-sm">download</a>
                                         </c:if>

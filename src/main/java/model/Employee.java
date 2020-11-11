@@ -16,16 +16,21 @@ public class Employee extends model.Entity {
     private String name;
     @ManyToOne(fetch = FetchType.EAGER)
     private Employee manger;
+    @Column(nullable = false, length = 30)
+    private String username;
+    @Column(unique = true, nullable = false, length = 30)
+    private String password;
 
     public Employee() {
     }
 
-    public Employee(String name, Employee manger, CategoryElement gender, CategoryElement role) {
+    public Employee(String name, Employee manger, CategoryElement gender, CategoryElement role, String username, String password) {
         this.name = name;
         this.manger = manger;
         this.gender = gender;
         this.role = role;
-
+        this.username = username;
+        this.password = password;
     }
 
     public String getName() {
@@ -58,5 +63,21 @@ public class Employee extends model.Entity {
 
     public void setManger(Employee manger) {
         this.manger = manger;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
