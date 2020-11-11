@@ -53,7 +53,7 @@
         <%
         } else {
     %>
-    <div class="container text-left">
+    <div class="container text-right">
         <%
             }
         %>

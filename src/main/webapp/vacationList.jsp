@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Vacation List</title>
+    <title>لیست مرخصی</title>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -16,7 +16,7 @@
     <script src="js/persianDatepicker.js"></script>
     <script src="js/functions.js"></script>
 </head>
-<body style="direction: ltr">
+<body style="direction: rtl">
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark"
@@ -24,24 +24,24 @@
         <ul class="navbar-nav">
             <li>
                 <a href="<%=request.getContextPath()%>/home" class="nav-link">
-                    home
+                    خانه
                 </a>
             </li>
             <li>
                 <a href="<%=request.getContextPath()%>/vacationList" class="nav-link">
-                    Vacation List
+                    لیست مرخصی
                 </a>
             </li>
             <li>
                 <a href="<%=request.getContextPath()%>/logout" class="nav-link">
-                    logout
+                    خروج
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <br>
-<div class="container text-left">
+<div class="container text-right">
     <div class="card">
         <div class="card-body">
             <form name="vacationForm" action="/vacationList" method="post" autocomplete="off">
@@ -66,11 +66,11 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Applicant</th>
-                                <th scope="col">Start Date</th>
-                                <th scope="col">End Date</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">درخواست دهنده</th>
+                                <th scope="col">تاریخ شروع</th>
+                                <th scope="col">تاریخ پپایان</th>
+                                <th scope="col">وضعیت</th>
+                                <th scope="col">عملیان</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -80,7 +80,7 @@
                                     <td scope="col">${vacation.employee.name}</td>
                                     <td scope="col">${vacation.startDate}</td>
                                     <td scope="col">${vacation.endDate}</td>
-                                    <td scope="col">${vacation.status.englishName}</td>
+                                    <td scope="col">${vacation.status.persianName}</td>
                                     <td scope="col">
                                         <c:if test="${vacation.status.englishName.equals('waiting for acceptance')}">
                                             <a href="<%=request.getContextPath()%>/vacationList/accept?vacationId=${vacation.getId()}" class="btn btn-outline-success btn-sm">Accept</a>

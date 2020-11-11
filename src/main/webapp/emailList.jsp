@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Email List</title>
+    <title>لیست ایمیل ها</title>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -16,7 +16,7 @@
     <script src="js/persianDatepicker.js"></script>
     <script src="js/functions.js"></script>
 </head>
-<body style="direction: ltr">
+<body style="direction: rtl">
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark"
@@ -24,24 +24,24 @@
         <ul class="navbar-nav">
             <li>
                 <a href="<%=request.getContextPath()%>/home" class="nav-link">
-                    home
+                    خانه
                 </a>
             </li>
             <li>
                 <a href="<%=request.getContextPath()%>/emailList" class="nav-link">
-                    Email List
+                    لیست ایمیل ها
                 </a>
             </li>
             <li>
                 <a href="<%=request.getContextPath()%>/logout" class="nav-link">
-                    logout
+                    خذوج
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <br>
-<div class="container text-left">
+<div class="container text-right">
     <div class="card">
         <div class="card-body">
             <form name="emailForm" action="/emailList" method="post" autocomplete="off">
@@ -66,10 +66,10 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Sender</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Body</th>
-                                <th scope="col">Attachment</th>
+                                <th scope="col">ارسال کننده</th>
+                                <th scope="col">عنوان</th>
+                                <th scope="col">متن</th>
+                                <th scope="col">پیوست</th>
                             </tr>
                             </thead>
                             <tbody>

@@ -52,6 +52,7 @@ public class EmployeeController extends DotinController {
     }
 
     private void saveEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        request.setCharacterEncoding("UTF-8");
         String name = String.valueOf(request.getParameter("employeeName"));
         Employee manager = EmployeeService.getEmployeeByName(request.getParameter("employeeManager"));
         CategoryElement role = CategoryElementService.getCategoryElementByName(request.getParameter("employeeRole"));

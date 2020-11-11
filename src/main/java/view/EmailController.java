@@ -64,6 +64,7 @@ public class EmailController extends DotinController {
     }
 
     private void sendEmail(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        request.setCharacterEncoding("UTF-8");
 //        Employee sender = EmployeeService.getEmployeeByName(request.getParameter("sender"));
         Employee sender = user;
         Set<Employee> receiver = Arrays.stream(request.getParameterValues("receivers")).map(r -> EmployeeService.getEmployeeByName(r)).collect(Collectors.toSet());

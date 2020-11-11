@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        Dotin Portal
+        داتین
     </title>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -17,7 +17,7 @@
           crossorigin="anonymous">
     <script src="js/functions.js"></script>
 </head>
-<body style="direction: ltr">
+<body style="direction: rtl">
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark"
@@ -25,7 +25,7 @@
         <ul class="navbar-nav">
             <li>
                 <a href="<%=request.getContextPath()%>/logout" class="nav-link">
-                    logout
+                    خروج
                 </a>
             </li>
         </ul>
@@ -33,13 +33,15 @@
 </header>
 
 <br>
-<div class="container text-left">
+<div class="container text-right">
         <div style="padding: 10px; margin: 20px;">
             <h1>
-                Welcome to Dotin Portal
+<%--                Welcome to Dotin Portal--%>
+                به سامانه داتین خوش آمدید.
             </h1>
             <h2>
-                Please Choose Your Operation
+<%--                Please Choose Your Operation--%>
+                لطفا عملیات مورد نظر خود را انتخاب کنید.
             </h2>
         </div>
         <br>
@@ -47,27 +49,32 @@
             <div class="col">
                 <a href="<%=request.getContextPath()%>/employee"
                    class="btn btn-outline-primary btn-lg btn-block">
-                    Add Employee
+<%--                    Add Employee--%>
+                    افزودن کاربر
                 </a>
             </div>
             <div class="col">
                 <a href="<%=request.getContextPath()%>/vacation" class="btn btn-outline-danger btn-lg btn-block">
-                    Request Vacation
+<%--                    Request Vacation--%>
+                    درخواست مرخصی
                 </a>
             </div>
             <div class="col">
                 <a href="<%=request.getContextPath()%>/email" class="btn btn-outline-warning btn-lg btn-block">
-                    Send Email
+<%--                    Send Email--%>
+                    ارسال ایمیل
                 </a>
             </div>
             <div class="col">
                 <a href="<%=request.getContextPath()%>/emailList" class="btn btn-outline-success btn-lg btn-block">
-                    Browse Emails
+<%--                    Browse Emails--%>
+                    مشاهده ایمیل ها
                 </a>
             </div>
             <div class="col">
                 <a href="<%=request.getContextPath()%>/vacationList"  class="btn btn-outline-success btn-lg btn-block">
-                    Browse Vacation
+<%--                    Browse Vacation--%>
+                    مشاهده مرخصی
                 </a>
             </div>
         </div>

@@ -16,7 +16,7 @@
     <script src="js/persianDatepicker.js"></script>
     <script src="js/functions.js"></script>
 </head>
-<body style="direction: ltr">
+<body style="direction: rtl">
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark"
@@ -24,29 +24,29 @@
         <ul class="navbar-nav">
             <li>
                 <a href="<%=request.getContextPath()%>/home" class="nav-link">
-                    home
+                    خانه
                 </a>
             </li>
             <li>
                 <a href="<%=request.getContextPath()%>/vacation" class="nav-link">
-                    Vacation
+                    مرخصی
                 </a>
             </li>
             <li>
                 <a href="<%=request.getContextPath()%>/logout" class="nav-link">
-                    logout
+                    خروج
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <br>
-<div class="container text-left">
+<div class="container text-right">
     <div class="card">
         <div class="card-body">
             <form action="/vacation/save" method="post" autocomplete="off">
                 <h2 class="text-center">
-                    Vacation
+                    مرخصی
                 </h2>
                 <br>
                 <%--<div class="form-row">
@@ -62,15 +62,15 @@
                 </div>--%>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label class="col-md-6">Start Day</label>
+                        <label class="col-md-6">روز شروع</label>
                         <input required type="date" class="form-control col-md-6" name="startDate" title="startDate">
                     </div>
                     <div class="form-group col-md-6">
-                        <label class="col-md-6">End Day</label>
+                        <label class="col-md-6">روز پایان</label>
                         <input required type="date" class="form-control col-md-6" name="endDate" title="endDate">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">apply vacation</button>
+                <button type="submit" class="btn btn-primary">درخواست مرخصی</button>
             </form>
         </div>
     </div>

@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Email</title>
+    <title>ایمیل</title>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -16,7 +16,7 @@
     <script src="js/persianDatepicker.js"></script>
     <script src="js/functions.js"></script>
 </head>
-<body style="direction: ltr">
+<body style="direction: rtl">
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark"
@@ -24,29 +24,29 @@
         <ul class="navbar-nav">
             <li>
                 <a href="<%=request.getContextPath()%>/logout" class="nav-link">
-                    logout
+                    خروج
                 </a>
             </li>
             <li>
                 <a href="<%=request.getContextPath()%>/home" class="nav-link">
-                    home
+                    خانه
                 </a>
             </li>
             <li>
                 <a href="<%=request.getContextPath()%>/Email" class="nav-link">
-                    Email
+                    ایمیل
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <br>
-<div class="container text-left">
+<div class="container text-right">
     <div class="card">
         <div class="card-body">
             <form action="/email/send" enctype="multipart/form-data" method="post" autocomplete="off">
                 <h2 class="text-center">
-                    Email
+                    ایمیل
                 </h2>
                 <br>
                 <%--<div class="form-row">
@@ -62,9 +62,8 @@
                 </div>--%>
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-6">Receivers</label>
+                        <label class="col-md-6">دریافت کنندگان</label>
                         <select required multiple class="form-control col-md-6" name="receivers">
-                            <option value="" selected disabled hidden>Choose Receivers</option>
                             <c:forEach items="${listEmployee}" var="employee">
                                 <option value="${employee.getName()}">${employee.getName()}</option>
                             </c:forEach>
@@ -73,23 +72,23 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-6">Title</label>
+                        <label class="col-md-6">عنوان</label>
                         <input required name="title" class="form-control col-md-6" type="text">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-6">Email</label>
+                        <label class="col-md-6">ایمیل</label>
                         <textarea required name="body" class="form-control col-md-12" rows="5"></textarea>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-6">Attachment</label>
+                        <label class="col-md-6">پیوست</label>
                         <input class="col-md-6" type="file" name="file" size="50"/>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">send email</button>
+                <button type="submit" class="btn btn-primary">ارسال ایمیل</button>
             </form>
         </div>
     </div>

@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>ورود</title>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -16,31 +16,31 @@
     <script src="js/persianDatepicker.js"></script>
     <script src="js/functions.js"></script>
 </head>
-<body style="direction: ltr">
+<body style="direction: rtl">
 
 <header>
 
 </header>
 <br>
-<div class="container text-left">
+<div class="container text-right">
     <div class="card">
         <div class="card-body">
             <form action="/login" method="post" autocomplete="off">
                 <h2 class="text-center">
-                    Login
+                    ورود
                 </h2>
                 <br>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label class="col-md-6">User Name</label>
+                        <label class="col-md-6">نام کاربری</label>
                         <input required class="form-control col-md-6" type="text" name="username">
                     </div>
                     <div class="form-group col-md-6">
-                        <label class="col-md-6">Pass Word</label>
+                        <label class="col-md-6">گذرواژه</label>
                         <input required class="form-control col-md-6" type="text" name="password">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">login</button>
+                <button type="submit" class="btn btn-primary">ورود</button>
             </form>
         </div>
     </div>
