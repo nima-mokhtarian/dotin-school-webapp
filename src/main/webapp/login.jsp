@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label class="col-md-6">گذرواژه</label>
-                        <input required class="form-control col-md-6" type="text" name="password">
+                        <input required class="form-control col-md-6" type="password" name="password">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">ورود</button>
